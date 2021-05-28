@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import s from './CashCalculator.module.css'
 import {useDispatch, useSelector} from "react-redux";
 import {ReduxRootState} from "../redux/store";
@@ -21,6 +21,7 @@ const CashCalculator = () => {
     let fiveHundredResult = fiveHundred * 500
     let twoHundredResult = twoHundred * 200
     let oneHundredResult = oneHundred * 100
+
     return (
         <div className={s.container}>
             <div className={s.cashDisplay}>
