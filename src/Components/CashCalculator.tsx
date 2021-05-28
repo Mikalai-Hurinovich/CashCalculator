@@ -26,8 +26,10 @@ const CashCalculator = () => {
         <div className={s.container}>
             <div className={s.cashDisplay}>
                 <button onClick={() => setThousands(thousands - 1)}>-</button>
-                <input className={s.input} type="number" value={thousands}
-                       onChange={e => setThousands(+e.currentTarget.value)}/>
+                <input className={s.input} type="tel" value={thousands}
+                       onChange={e => {
+                           setThousands(+(e.currentTarget.value))
+                       }}/>
                 <button onClick={() => setThousands(thousands + 1)}>+</button>
                 <span className={s.result}> = {thousandsResult}</span>
             </div>
