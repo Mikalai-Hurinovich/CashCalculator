@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import CashCalculator from "./Components/CashCalculator";
+import CashCalculatorContainer from "./Components/mainCashCalculator/CashCalculatorContainer";
 
 function App() {
     return (
         <div className="App">
-            <CashCalculator/>
+            <CashCalculatorContainer/>
         </div>
     );
 }
