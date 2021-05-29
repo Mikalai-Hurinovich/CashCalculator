@@ -8,9 +8,9 @@ type cashCalcPropsType = {
     twoHundred: number
     oneHundred: number
     setThousands: (thousands: number) => void
-    setFiveHundred: (thousands: number) => void
-    setTwoHundred: (thousands: number) => void
-    setOneHundred: (thousands: number) => void
+    setFiveHundred: (fiveHundred: number) => void
+    setTwoHundred: (twoHundred: number) => void
+    setOneHundred: (oneHundred: number) => void
     thousandsResult: number
     fiveHundredResult: number
     twoHundredResult: number
