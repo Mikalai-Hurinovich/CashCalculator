@@ -52,41 +52,41 @@ let initialState: initialStateType = {
     twoCents: 0,
     oneCent: 0
 }
-// Action Creators
-type thousandsACType = ({ type: typeof SET_THOUSANDS, thousands: number })
-type fiveHundredACType = ({ type: typeof SET_FIVE_HUNDRED, fiveHundred: number })
-type twoHundredACType = ({ type: typeof SET_TWO_HUNDRED, twoHundred: number })
-type oneHundredACType = ({ type: typeof SET_ONE_HUNDRED, oneHundred: number })
-type fiftyACType = ({ type: typeof SET_FIFTY, fifty: number })
-type twentyACType = ({ type: typeof SET_TWENTY, twenty: number })
-type tenACType = ({ type: typeof SET_TEN, ten: number })
-type fiveACType = ({ type: typeof SET_FIVE, five: number })
-type twoACType = ({ type: typeof SET_TWO, two: number })
-type oneACType = ({ type: typeof SET_ONE, one: number })
-type fiftyCentsACType = ({ type: typeof SET_FIFTY_CENTS, fiftyCents: number })
-type twentyCentsACType = ({ type: typeof SET_TWENTY_CENTS, twentyCents: number })
-type tenCentsACType = ({ type: typeof SET_TEN_CENTS, tenCents: number })
-type fiveCentsACType = ({ type: typeof SET_FIVE_CENTS, fiveCents: number })
-type twoCentsACType = ({ type: typeof SET_TWO_CENTS, twoCents: number })
-type oneCentACType = ({ type: typeof SET_ONE_CENT, oneCent: number })
+// Action Creators Types
+type thousandsACType = ({ type: typeof SET_THOUSANDS, payload: { thousands: number } })
+type fiveHundredACType = ({ type: typeof SET_FIVE_HUNDRED, payload: { fiveHundred: number } })
+type twoHundredACType = ({ type: typeof SET_TWO_HUNDRED, payload: { twoHundred: number } })
+type oneHundredACType = ({ type: typeof SET_ONE_HUNDRED, payload: { oneHundred: number } })
+type fiftyACType = ({ type: typeof SET_FIFTY, payload: { fifty: number } })
+type twentyACType = ({ type: typeof SET_TWENTY, payload: { twenty: number } })
+type tenACType = ({ type: typeof SET_TEN, payload: { ten: number } })
+type fiveACType = ({ type: typeof SET_FIVE, payload: { five: number } })
+type twoACType = ({ type: typeof SET_TWO, payload: { two: number } })
+type oneACType = ({ type: typeof SET_ONE, payload: { one: number } })
+type fiftyCentsACType = ({ type: typeof SET_FIFTY_CENTS, payload: { fiftyCents: number } })
+type twentyCentsACType = ({ type: typeof SET_TWENTY_CENTS, payload: { twentyCents: number } })
+type tenCentsACType = ({ type: typeof SET_TEN_CENTS, payload: { tenCents: number } })
+type fiveCentsACType = ({ type: typeof SET_FIVE_CENTS, payload: { fiveCents: number } })
+type twoCentsACType = ({ type: typeof SET_TWO_CENTS, payload: { twoCents: number } })
+type oneCentACType = ({ type: typeof SET_ONE_CENT, payload: { oneCent: number } })
 
-// Actions
-export const thousandsAC = (thousands: number) => ({type: SET_THOUSANDS, thousands})
-export const fiveHundredAC = (fiveHundred: number) => ({type: SET_FIVE_HUNDRED, fiveHundred})
-export const twoHundredAC = (twoHundred: number) => ({type: SET_TWO_HUNDRED, twoHundred})
-export const oneHundredAC = (oneHundred: number) => ({type: SET_ONE_HUNDRED, oneHundred})
-export const fiftyAC = (fifty: number) => ({type: SET_FIFTY, fifty})
-export const twentyAC = (twenty: number) => ({type: SET_TWENTY, twenty})
-export const tenAC = (ten: number) => ({type: SET_TEN, ten})
-export const fiveAC = (five: number) => ({type: SET_FIVE, five})
-export const twoAC = (two: number) => ({type: SET_TWO, two})
-export const oneAC = (one: number) => ({type: SET_ONE, one})
-export const fiftyCentsAC = (fiftyCents: number) => ({type: SET_FIFTY_CENTS, fiftyCents})
-export const twentyCentsAC = (twentyCents: number) => ({type: SET_TWENTY_CENTS, twentyCents})
-export const tenCentsAC = (tenCents: number) => ({type: SET_TEN_CENTS, tenCents})
-export const fiveCentsAC = (fiveCents: number) => ({type: SET_FIVE_CENTS, fiveCents})
-export const twoCentsAC = (twoCents: number) => ({type: SET_TWO_CENTS, twoCents})
-export const oneCentAC = (oneCent: number) => ({type: SET_ONE_CENT, oneCent})
+// Action Creators
+export const thousandsAC = (thousands: number) => ({type: SET_THOUSANDS, payload: {thousands}})
+export const fiveHundredAC = (fiveHundred: number) => ({type: SET_FIVE_HUNDRED, payload: {fiveHundred}})
+export const twoHundredAC = (twoHundred: number) => ({type: SET_TWO_HUNDRED, payload: {twoHundred}})
+export const oneHundredAC = (oneHundred: number) => ({type: SET_ONE_HUNDRED, payload: {oneHundred}})
+export const fiftyAC = (fifty: number) => ({type: SET_FIFTY, payload: {fifty}})
+export const twentyAC = (twenty: number) => ({type: SET_TWENTY, payload: {twenty}})
+export const tenAC = (ten: number) => ({type: SET_TEN, payload: {ten}})
+export const fiveAC = (five: number) => ({type: SET_FIVE, payload: {five}})
+export const twoAC = (two: number) => ({type: SET_TWO, payload: {two}})
+export const oneAC = (one: number) => ({type: SET_ONE, payload: {one}})
+export const fiftyCentsAC = (fiftyCents: number) => ({type: SET_FIFTY_CENTS, payload: {fiftyCents}})
+export const twentyCentsAC = (twentyCents: number) => ({type: SET_TWENTY_CENTS, payload: {twentyCents}})
+export const tenCentsAC = (tenCents: number) => ({type: SET_TEN_CENTS, payload: {tenCents}})
+export const fiveCentsAC = (fiveCents: number) => ({type: SET_FIVE_CENTS, payload: {fiveCents}})
+export const twoCentsAC = (twoCents: number) => ({type: SET_TWO_CENTS, payload: {twoCents}})
+export const oneCentAC = (oneCent: number) => ({type: SET_ONE_CENT, payload: {oneCent}})
 
 // Main Type
 type ActionsType = thousandsACType
@@ -109,37 +109,22 @@ type ActionsType = thousandsACType
 const CashReducer = (state: initialStateType = initialState, action: ActionsType): initialStateType => {
     switch (action.type) {
         case "SET_THOUSANDS":
-            return {...state, thousands: action.thousands}
         case "SET_FIVE_HUNDRED":
-            return {...state, fiveHundred: action.fiveHundred}
         case "SET_TWO_HUNDRED":
-            return {...state, twoHundred: action.twoHundred}
         case "SET_ONE_HUNDRED":
-            return {...state, oneHundred: action.oneHundred}
         case "SET_FIFTY":
-            return {...state, fifty: action.fifty}
         case "SET_TWENTY":
-            return {...state, twenty: action.twenty}
         case "SET_TEN":
-            return {...state, ten: action.ten}
         case "SET_FIVE":
-            return {...state, five: action.five}
         case "SET_TWO":
-            return {...state, two: action.two}
         case "SET_ONE":
-            return {...state, one: action.one}
         case "SET_FIFTY_CENTS":
-            return {...state, fiftyCents: action.fiftyCents}
         case "SET_TWENTY_CENTS":
-            return {...state, twentyCents: action.twentyCents}
         case "SET_TEN_CENTS":
-            return {...state, tenCents: action.tenCents}
         case "SET_FIVE_CENTS":
-            return {...state, fiveCents: action.fiveCents}
         case "SET_TWO_CENTS":
-            return {...state, twoCents: action.twoCents}
         case "SET_ONE_CENT":
-            return {...state, oneCent: action.oneCent}
+            return {...state, ...action.payload}
         default:
             return state;
     }
