@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {ReduxRootState} from "../../redux/store";
 import {fiveHundredAC, initialStateType, oneHundredAC, thousandsAC, twoHundredAC} from "../../redux/calclulatorReducer";
 import CashCalculator from "./CashCalculator";
 
 const CashCalculatorContainer = () => {
+    console.log('CashCalculatorContainer render')
     const dispatch = useDispatch();
     const {
         thousands,
@@ -13,16 +14,16 @@ const CashCalculatorContainer = () => {
         oneHundred
     } = useSelector<ReduxRootState, initialStateType>(state => state.cashCalculator)
 
-    const setThousands = (thousands: number) => dispatch(thousandsAC(thousands))
-    const setFiveHundred = (fiveHundred: number) => dispatch(fiveHundredAC(fiveHundred))
-    const setTwoHundred = (twoHundred: number) => dispatch(twoHundredAC(twoHundred))
-    const setOneHundred = (oneHundred: number) => dispatch(oneHundredAC(oneHundred))
+    const setThousands = useCallback((thousands: number) => dispatch(thousandsAC(thousands)), [dispatch])
+    const setFiveHundred = useCallback((fiveHundred: number) => dispatch(fiveHundredAC(fiveHundred)), [dispatch])
+    const setTwoHundred = useCallback((twoHundred: number) => dispatch(twoHundredAC(twoHundred)), [dispatch])
+    const setOneHundred = useCallback((oneHundred: number) => dispatch(oneHundredAC(oneHundred)), [dispatch])
 
     let thousandsResult = thousands * 1000
     let fiveHundredResult = fiveHundred * 500
     let twoHundredResult = twoHundred * 200
     let oneHundredResult = oneHundred * 100
-
+    let mainResult = thousandsResult + fiveHundredResult + twoHundredResult + oneHundredResult
     return (
         <div>
             <CashCalculator
@@ -38,9 +39,10 @@ const CashCalculatorContainer = () => {
                 fiveHundredResult={fiveHundredResult}
                 twoHundredResult={twoHundredResult}
                 oneHundredResult={oneHundredResult}
+                mainResult={mainResult}
             />
         </div>
     );
 };
 
-export default CashCalculatorContainer;
+export default React.memo(CashCalculatorContainer);

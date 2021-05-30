@@ -15,50 +15,47 @@ type cashCalcPropsType = {
     fiveHundredResult: number
     twoHundredResult: number
     oneHundredResult: number
+    mainResult: number
 }
 
 const CashCalculator = (props: cashCalcPropsType) => {
+    console.log('CashCalculator render')
+    const onChangeCreator = (callback: (n: number) => void, value: number) => (e: React.FormEvent<HTMLInputElement>) => {
+        callback(isNaN(+e.currentTarget.value) ? value : +e.currentTarget.value)
+    }
     return (
         <div className={s.container}>
             <CashCalculatorItem
                 decrement={() => props.setThousands(props.thousands - 1)}
                 increment={() => props.setThousands(props.thousands + 1)}
                 calcItem={props.thousands}
-                onChange={(e: { currentTarget: { value: any } }) => {
-                    props.setThousands(+(e.currentTarget.value))
-                }}
+                onChange={onChangeCreator(props.setThousands, props.thousands)}
                 result={props.thousandsResult}
             />
             <CashCalculatorItem
                 decrement={() => props.setFiveHundred(props.fiveHundred - 1)}
                 increment={() => props.setFiveHundred(props.fiveHundred + 1)}
                 calcItem={props.fiveHundred}
-                onChange={(e: { currentTarget: { value: any } }) => {
-                    props.setFiveHundred(+(e.currentTarget.value))
-                }}
+                onChange={onChangeCreator(props.setFiveHundred, props.fiveHundred)}
                 result={props.fiveHundredResult}
             />
             <CashCalculatorItem
                 decrement={() => props.setTwoHundred(props.twoHundred - 1)}
                 increment={() => props.setTwoHundred(props.twoHundred + 1)}
                 calcItem={props.twoHundred}
-                onChange={(e: { currentTarget: { value: any } }) => {
-                    props.setTwoHundred(+e.currentTarget.value)
-                }}
+                onChange={onChangeCreator(props.setTwoHundred, props.twoHundred)}
                 result={props.twoHundredResult}
             />
             <CashCalculatorItem
                 decrement={() => props.setOneHundred(props.oneHundred - 1)}
                 increment={() => props.setOneHundred(props.oneHundred + 1)}
                 calcItem={props.oneHundred}
-                onChange={(e: { currentTarget: { value: any } }) => {
-                    props.setOneHundred(+e.currentTarget.value)
-                }}
+                onChange={onChangeCreator(props.setOneHundred, props.oneHundred)}
                 result={props.oneHundredResult}
             />
-            <div>Result: {props.thousandsResult + props.fiveHundredResult + props.twoHundredResult + props.oneHundredResult}</div>
+            <div>Result: {props.mainResult}</div>
         </div>
     );
 };
 
-export default CashCalculator;
+export default React.memo(CashCalculator);
