@@ -1,7 +1,14 @@
 import React, {useCallback} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {ReduxRootState} from "../../redux/store";
-import {fiveHundredAC, initialStateType, oneHundredAC, thousandsAC, twoHundredAC} from "../../redux/calclulatorReducer";
+import {
+    fiveHundredAC,
+    initialStateType,
+    oneHundredAC,
+    ResetAllToDefaultsAC,
+    thousandsAC,
+    twoHundredAC
+} from "../../redux/calclulatorReducer";
 import CashCalculator from "./CashCalculator";
 
 const CashCalculatorContainer = () => {
@@ -18,6 +25,7 @@ const CashCalculatorContainer = () => {
     const setFiveHundred = useCallback((fiveHundred: number) => dispatch(fiveHundredAC(fiveHundred)), [dispatch])
     const setTwoHundred = useCallback((twoHundred: number) => dispatch(twoHundredAC(twoHundred)), [dispatch])
     const setOneHundred = useCallback((oneHundred: number) => dispatch(oneHundredAC(oneHundred)), [dispatch])
+    const resetAll = useCallback(() => dispatch(ResetAllToDefaultsAC()), [dispatch])
 
     let thousandsResult = thousands * 1000
     let fiveHundredResult = fiveHundred * 500
@@ -40,6 +48,8 @@ const CashCalculatorContainer = () => {
                 twoHundredResult={twoHundredResult}
                 oneHundredResult={oneHundredResult}
                 mainResult={mainResult}
+                resetAll={resetAll}
+
             />
         </div>
     );

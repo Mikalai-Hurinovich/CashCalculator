@@ -17,6 +17,6 @@ const CashCalculatorItem = (props: any) => {
     );
 };
 
-export default React.memo(CashCalculatorItem,(prevProps, nextProps)=>{
+export default React.memo(CashCalculatorItem, (prevProps, nextProps) => {
     return prevProps.calcItem === nextProps.calcItem
 });

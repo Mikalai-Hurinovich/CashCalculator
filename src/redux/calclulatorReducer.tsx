@@ -14,6 +14,7 @@ const SET_TEN_CENTS = 'SET_TEN_CENTS'
 const SET_FIVE_CENTS = 'SET_FIVE_CENTS'
 const SET_TWO_CENTS = 'SET_TWO_CENTS'
 const SET_ONE_CENT = 'SET_ONE_CENT'
+const RESET_ALL_TO_DEFAULTS = 'RESET_ALL_TO_DEFAULTS'
 
 // Initial State
 export type initialStateType = {
@@ -69,6 +70,7 @@ type tenCentsACType = ({ type: typeof SET_TEN_CENTS, payload: { tenCents: number
 type fiveCentsACType = ({ type: typeof SET_FIVE_CENTS, payload: { fiveCents: number } })
 type twoCentsACType = ({ type: typeof SET_TWO_CENTS, payload: { twoCents: number } })
 type oneCentACType = ({ type: typeof SET_ONE_CENT, payload: { oneCent: number } })
+type ResetAllToDefaultsType = ({ type: typeof RESET_ALL_TO_DEFAULTS })
 
 // Action Creators
 export const thousandsAC = (thousands: number) => ({type: SET_THOUSANDS, payload: {thousands}})
@@ -87,6 +89,7 @@ export const tenCentsAC = (tenCents: number) => ({type: SET_TEN_CENTS, payload: 
 export const fiveCentsAC = (fiveCents: number) => ({type: SET_FIVE_CENTS, payload: {fiveCents}})
 export const twoCentsAC = (twoCents: number) => ({type: SET_TWO_CENTS, payload: {twoCents}})
 export const oneCentAC = (oneCent: number) => ({type: SET_ONE_CENT, payload: {oneCent}})
+export const ResetAllToDefaultsAC = () => ({type: RESET_ALL_TO_DEFAULTS})
 
 // Main Type
 type ActionsType = thousandsACType
@@ -105,6 +108,7 @@ type ActionsType = thousandsACType
     | fiveCentsACType
     | twoCentsACType
     | oneCentACType
+    | ResetAllToDefaultsType
 
 const CashReducer = (state: initialStateType = initialState, action: ActionsType): initialStateType => {
     switch (action.type) {
@@ -124,7 +128,9 @@ const CashReducer = (state: initialStateType = initialState, action: ActionsType
         case "SET_FIVE_CENTS":
         case "SET_TWO_CENTS":
         case "SET_ONE_CENT":
-            return {...state, ...action.payload}
+            return {...state, ...action.payload};
+        case "RESET_ALL_TO_DEFAULTS":
+            return initialState;
         default:
             return state;
     }

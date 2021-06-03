@@ -16,6 +16,7 @@ type cashCalcPropsType = {
     twoHundredResult: number
     oneHundredResult: number
     mainResult: number
+    resetAll: () => void
 }
 
 const CashCalculator = (props: cashCalcPropsType) => {
@@ -54,6 +55,7 @@ const CashCalculator = (props: cashCalcPropsType) => {
                 result={props.oneHundredResult}
             />
             <div>Result: {props.mainResult}</div>
+            <button onClick={props.resetAll}>Reset All</button>
         </div>
     );
 };
