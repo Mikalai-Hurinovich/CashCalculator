@@ -1,17 +1,11 @@
 import React, {useState} from 'react';
 import s from './InnerCalculator.module.css'
-import {useSelector} from "react-redux";
-import {ReduxRootState} from "../../redux/store";
-import {initialStateType} from "../../redux/calclulatorReducer";
 
 type InnerCalculatorType = {
     mainResult: number
 }
 const InnerCalculator = (props: InnerCalculatorType) => {
     const [result, setResult] = useState('')
-    // const cashCalcResult = useSelector<ReduxRootState, initialStateType>(state => state.cashCalculator)
-    // const sumValues = (value: initialStateType) => Object.values(value).reduce((a, b) => a + b);
-    // console.log(sumValues(cashCalcResult))
     const mainResult = () => {
         setResult(String(props.mainResult))
     }
