@@ -15,6 +15,7 @@ const SET_FIVE_CENTS = 'SET_FIVE_CENTS'
 const SET_TWO_CENTS = 'SET_TWO_CENTS'
 const SET_ONE_CENT = 'SET_ONE_CENT'
 const RESET_ALL_TO_DEFAULTS = 'RESET_ALL_TO_DEFAULTS'
+const SUM_ALL_VALUES = 'SUM_ALL_VALUES'
 
 // Initial State
 export type initialStateType = {
@@ -33,7 +34,8 @@ export type initialStateType = {
     tenCents: number,
     fiveCents: number,
     twoCents: number,
-    oneCent: number
+    oneCent: number,
+    allValues: number
 }
 let initialState: initialStateType = {
     thousands: 0,
@@ -51,7 +53,8 @@ let initialState: initialStateType = {
     tenCents: 0,
     fiveCents: 0,
     twoCents: 0,
-    oneCent: 0
+    oneCent: 0,
+    allValues: 0
 }
 // Action Creators Types
 type thousandsACType = ({ type: typeof SET_THOUSANDS, payload: { thousands: number } })
@@ -71,6 +74,7 @@ type fiveCentsACType = ({ type: typeof SET_FIVE_CENTS, payload: { fiveCents: num
 type twoCentsACType = ({ type: typeof SET_TWO_CENTS, payload: { twoCents: number } })
 type oneCentACType = ({ type: typeof SET_ONE_CENT, payload: { oneCent: number } })
 type ResetAllToDefaultsType = ({ type: typeof RESET_ALL_TO_DEFAULTS })
+type sumAllValuesType = ({ type: typeof SUM_ALL_VALUES, allValues: number })
 
 // Action Creators
 export const thousandsAC = (thousands: number) => ({type: SET_THOUSANDS, payload: {thousands}})
@@ -90,6 +94,7 @@ export const fiveCentsAC = (fiveCents: number) => ({type: SET_FIVE_CENTS, payloa
 export const twoCentsAC = (twoCents: number) => ({type: SET_TWO_CENTS, payload: {twoCents}})
 export const oneCentAC = (oneCent: number) => ({type: SET_ONE_CENT, payload: {oneCent}})
 export const ResetAllToDefaultsAC = () => ({type: RESET_ALL_TO_DEFAULTS})
+export const sumAllValues = (allValues: number) => ({type: SUM_ALL_VALUES, allValues})
 
 // Main Type
 type ActionsType = thousandsACType
@@ -109,6 +114,7 @@ type ActionsType = thousandsACType
     | twoCentsACType
     | oneCentACType
     | ResetAllToDefaultsType
+    | sumAllValuesType
 
 const CashReducer = (state: initialStateType = initialState, action: ActionsType): initialStateType => {
     switch (action.type) {
@@ -131,6 +137,9 @@ const CashReducer = (state: initialStateType = initialState, action: ActionsType
             return {...state, ...action.payload};
         case "RESET_ALL_TO_DEFAULTS":
             return initialState;
+        case "SUM_ALL_VALUES": {
+            return {...state, allValues: action.allValues}
+        }
         default:
             return state;
     }

@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './CashCalculator.module.css'
-import CashCalculatorItem from "../cashCalculatorItem/CashCalculatorItem";
+import CashCalculatorItem from "./cashCalculatorItem/CashCalculatorItem";
 
 type cashCalcPropsType = {
     thousands: number
@@ -27,6 +27,7 @@ const CashCalculator = (props: cashCalcPropsType) => {
     return (
         <div className={s.container}>
             <CashCalculatorItem
+                currentCurrency={1000}
                 decrement={() => props.setThousands(props.thousands - 1)}
                 increment={() => props.setThousands(props.thousands + 1)}
                 calcItem={props.thousands}
@@ -34,6 +35,7 @@ const CashCalculator = (props: cashCalcPropsType) => {
                 result={props.thousandsResult}
             />
             <CashCalculatorItem
+                currentCurrency={500}
                 decrement={() => props.setFiveHundred(props.fiveHundred - 1)}
                 increment={() => props.setFiveHundred(props.fiveHundred + 1)}
                 calcItem={props.fiveHundred}
@@ -41,6 +43,7 @@ const CashCalculator = (props: cashCalcPropsType) => {
                 result={props.fiveHundredResult}
             />
             <CashCalculatorItem
+                currentCurrency={200}
                 decrement={() => props.setTwoHundred(props.twoHundred - 1)}
                 increment={() => props.setTwoHundred(props.twoHundred + 1)}
                 calcItem={props.twoHundred}
@@ -48,6 +51,7 @@ const CashCalculator = (props: cashCalcPropsType) => {
                 result={props.twoHundredResult}
             />
             <CashCalculatorItem
+                currentCurrency={100}
                 decrement={() => props.setOneHundred(props.oneHundred - 1)}
                 increment={() => props.setOneHundred(props.oneHundred + 1)}
                 calcItem={props.oneHundred}

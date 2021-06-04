@@ -1,6 +1,7 @@
 import React, {useCallback} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {ReduxRootState} from "../../redux/store";
+import s from './CashCalculatorContainer.module.css'
 import {
     fiveHundredAC,
     initialStateType,
@@ -10,6 +11,7 @@ import {
     twoHundredAC
 } from "../../redux/calclulatorReducer";
 import CashCalculator from "./CashCalculator";
+import InnerCalculator from "../InnerCalculator/InnerCalculator";
 
 const CashCalculatorContainer = () => {
     console.log('CashCalculatorContainer render')
@@ -33,7 +35,7 @@ const CashCalculatorContainer = () => {
     let oneHundredResult = oneHundred * 100
     let mainResult = thousandsResult + fiveHundredResult + twoHundredResult + oneHundredResult
     return (
-        <div>
+        <div className={s.mainContainer}>
             <CashCalculator
                 thousands={thousands}
                 fiveHundred={fiveHundred}
@@ -49,8 +51,9 @@ const CashCalculatorContainer = () => {
                 oneHundredResult={oneHundredResult}
                 mainResult={mainResult}
                 resetAll={resetAll}
-
             />
+            <InnerCalculator
+                mainResult={mainResult}/>
         </div>
     );
 };
