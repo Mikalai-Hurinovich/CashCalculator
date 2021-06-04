@@ -26,7 +26,7 @@ const InnerCalculator = (props: InnerCalculatorType) => {
     }
     const calculate = () => {
         try {
-            setResult(eval(result).toFixed(2))
+            setResult(window.eval(result).toFixed(2))
         } catch (e) {
             setResult('Error')
         }
@@ -37,7 +37,7 @@ const InnerCalculator = (props: InnerCalculatorType) => {
                 <input onChange={() => console.log('onchange')} className={s.input} type="text" value={result}/>
             </form>
             <div className={s.keypad}>
-                <button onClick={clear}>Clear</button>
+                <button onClick={clear}>AC</button>
                 <button onClick={backspace}>C</button>
                 <button onClick={mainResult}>⚡</button>
                 <button onClick={handleClick} name={'/'}>/</button>
